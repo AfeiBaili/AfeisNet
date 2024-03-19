@@ -2,27 +2,28 @@ package frame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-import static frame.StaticFrameVariable.*;
+import static frame.StaticFrameVariable.leftPanelItemList;
 
 public class Friends {
     public static void addFiend() {
         JPanel list = new JPanel();
         JPanel panel = new JPanel();
-        list.setBounds(itemX, itemY, leftPanelList.getWidth(), 70);
-        itemY += 72;
+        list.setBackground(new Color(191, 193, 194));
+        list.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                System.out.println(1);
+            }
 
-        list.setPreferredSize(new Dimension(leftPanelList.getWidth(), 70));
-        list.setBackground(Color.blue);
+            @Override
+            public void focusLost(FocusEvent e) {
+                System.out.println(2);
+            }
+        });
         leftPanelItemList.add(new ListPanel(list, panel));
-
-        leftPanelList.add(list);
-        leftPanelList.setPreferredSize(new Dimension(leftScrollPanel.getWidth() - 30, itemY));
-
-        leftScrollPanel.setViewportView(leftPanelList);
-
-        frame.revalidate();
-        frame.repaint();
     }
 
     public static void removeFiend() {

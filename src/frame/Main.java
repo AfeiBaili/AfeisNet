@@ -25,18 +25,21 @@ public class Main {
         frameWidth = (int) (screenWidth / 1.5);
         frameHeight = (int) (screenHeight / 1.4);
 
+        leftScrollPanel.getVerticalScrollBar().setUnitIncrement(30);
         leftScrollPanel.setSize(frameWidth / 4, frameHeight - 60);
         rightPanel.setBounds(leftScrollPanel.getWidth(), 0, frameWidth, frameHeight - 60);
         rightPanel.setBackground(new Color(191, 193, 194));
-        leftScrollPanel.setLayout(null);
         leftPanelList.setLayout(null);
         leftScrollPanel.setViewportView(leftPanelList);
 
+        for (int i = 0; i < 20; i++) {
+            addFiend();
+        }
     }
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            frame = new AFrame(frameWidth, frameHeight, "FLAnYing-Net");
+            frame = new AFrame(frameWidth, frameHeight, "AfeisNet");
 
             frame.addKeyListener(new ClosedKey());
 
@@ -48,13 +51,10 @@ public class Main {
 
             frame.setJMenuBar(menuBar);
 
-            for (int i = 0; i < 10; i++) {
-                addFiend();
-            }
-
             menu();
 
             frame.setVisible(true);
+            Logger.out("AfeisNet启动成功");
         });
     }
 }
