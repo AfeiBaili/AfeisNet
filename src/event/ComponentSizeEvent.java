@@ -13,8 +13,8 @@ public class ComponentSizeEvent implements ComponentListener {
         frameWidth = frame.getWidth();
         frameHeight = frame.getHeight();
         leftScrollPanel.setSize(frameWidth / 4, frameHeight - 60);
-        rightPanel.setBounds(leftScrollPanel.getWidth(), 0, frameWidth, frameHeight - 60);
-
+        rightPanel.setBounds(leftScrollPanel.getWidth(), 0, (int) (frameWidth / 0.75), frameHeight - 60);
+        frame.revalidate();
         leftPaneListShow();
     }
 

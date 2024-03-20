@@ -13,10 +13,9 @@ public class Util {
     public static void leftPaneListShow() {
         itemY = 0;
         leftPanelItemList.forEach(listPanel -> {
-            JPanel list = listPanel.getList();
+            JPanel list = listPanel.list();
             list.setBounds(itemX, itemY, leftScrollPanel.getWidth(), 70);
             itemY += 72;
-
             leftPanelList.add(list);
             leftPanelList.setPreferredSize(new Dimension(leftScrollPanel.getWidth() - 30, itemY));
             leftScrollPanel.setViewportView(leftPanelList);

@@ -1,15 +1,14 @@
 package frame;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import static frame.StaticFrameVariable.fontSetList;
-import static frame.StaticFrameVariable.menuBar;
+import static frame.StaticFrameVariable.*;
 import static frame.Util.setFont;
 
 public class MenuBar {
     public static void menu() {
-        menuBar.setBackground(Color.white);
         //菜单
         JMenu main = new JMenu("主界面");
         JMenu files = new JMenu("文件");
@@ -37,5 +36,15 @@ public class MenuBar {
         fontSetList.add(log);
 
         setFont();
+
+        main.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                rightPanel.remove(0);
+                rightPanel.add(rightMainPanel);
+                rightPanel.revalidate();
+                rightPanel.repaint();
+            }
+        });
     }
 }

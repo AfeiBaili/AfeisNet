@@ -2,14 +2,15 @@ package frame;
 
 import event.ClosedKey;
 import event.ComponentSizeEvent;
+import frame.list.ReadAvatar;
 import logger.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static frame.Friends.addFiend;
 import static frame.MenuBar.menu;
 import static frame.StaticFrameVariable.*;
+import static frame.list.FriendList.addFiend;
 
 public class Main {
     static {
@@ -27,14 +28,14 @@ public class Main {
 
         leftScrollPanel.getVerticalScrollBar().setUnitIncrement(30);
         leftScrollPanel.setSize(frameWidth / 4, frameHeight - 60);
-        rightPanel.setBounds(leftScrollPanel.getWidth(), 0, frameWidth, frameHeight - 60);
+        rightPanel.setBounds(leftScrollPanel.getWidth(), 0, (int) (frameWidth * 0.75), frameHeight - 60);
         rightPanel.setBackground(new Color(191, 193, 194));
         leftPanelList.setLayout(null);
         leftScrollPanel.setViewportView(leftPanelList);
 
-        for (int i = 0; i < 20; i++) {
-            addFiend();
-        }
+        rightPanel.setLayout(new BorderLayout());
+        rightPanel.add(rightMainPanel);
+        addFiend(new ReadAvatar("resource/FLIcon_A.png").avatar, "我");
     }
 
     public static void main(String[] args) {

@@ -15,7 +15,7 @@ public class AFrame extends JFrame {
         this.setTitle(title);
         this.setLayout(null);
         try {
-            this.setIconImage(ImageIO.read(new File("resource\\round.png")));
+            this.setIconImage(ImageIO.read(new File("resource\\FLIcon_Z.png")));
         } catch (IOException e) {
             throw new RuntimeException("找不到Frame图标");
         }
